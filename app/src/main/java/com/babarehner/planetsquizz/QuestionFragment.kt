@@ -9,9 +9,12 @@ import android.view.ViewGroup
 
 /**
  * A simple [Fragment] subclass.
- * Use the [QuestionFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+**/
+
+interface QuestionListener {
+    fun onSelected(QuestionId: Int)
+}
+
 class QuestionFragment : Fragment(), View.OnClickListener {
     private lateinit var questionListener: QuestionListener
     override fun onAttach(context: Context) {
@@ -31,30 +34,23 @@ class QuestionFragment : Fragment(), View.OnClickListener {
         return inflater.inflate(R.layout.fragment_question, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState:Bundle?){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val questions = listOf<View>(
-            view.findViewById(R.id.q1),
-            view.findViewById(R.id.q2),
-            view.findViewById(R.id.q3)
+                view.findViewById(R.id.q1),
+                view.findViewById(R.id.q2),
+                view.findViewById(R.id.q3)
         )
         questions.forEach {
             it.setOnClickListener(this)
         }
     }
 
-    override  fun onClick(v: View?) {
+    // handle View.OnClickLIstener
+    override fun onClick(v: View?) {
         v?.let { question ->
             questionListener.onSelected(question.id)
         }
     }
 
-//    companion object {
-//        private const val QUESTION_ID = "QUESTION_ID"
-//        fun newInstance(questionID: Int) = QuestionFragment().apply {
-//            arguments = Bundle().apply {
-//                putInt(QUESTION_ID, questionID)
-//            }
-//        }
-//    }
 }

@@ -6,20 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ChooseAnswerFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+ * */
+
 class ChooseAnswerFragment : Fragment() {
 
-    private var question: Int = 1
+    private val questionAsked: TextView?
+        get() = view?.findViewById(R.id.question_asked)
 
 
     override fun onCreateView(
@@ -31,18 +28,26 @@ class ChooseAnswerFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
-        val questionID = arguments?.getInt(QUESTION_ID, 1) ?: 1
-        setQuestionData(questionID)
+        val questionId = arguments?.getInt(QUESTION_ID, 0) ?: 0
+        setQuestionData(questionId)
+    }
+
+    private fun setQuestionData(questionId: Int) {
+        when (questionId) {
+            R.id.q1 -> { questionAsked?.text = getString(R.string.q1) }
+            R.id.q2 -> {questionAsked?.text = getString(R.string.q2)}
+            R.id.q3 -> { questionAsked?.text = getString(R.string.q3) }
+            else -> { Toast.makeText(context, "Unknown Question", Toast.LENGTH_LONG).show()}
+        }
     }
 
 
-    fun setQuestionData(questionID: Int) { question = questionID }
 
     companion object {
         private const val QUESTION_ID = "QUESTION_ID"
-        fun newInstance(questionID: Int) = ChooseAnswerFragment().apply {
+        fun newInstance(questionId: Int) = ChooseAnswerFragment().apply {
             arguments = Bundle().apply {
-                putInt(QUESTION_ID, questionID)
+                putInt(QUESTION_ID, questionId)
             }
         }
     }
