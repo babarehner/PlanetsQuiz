@@ -25,7 +25,7 @@
             android:background="?android:attr/dividerVertical" />
         <TextView
             android:id="@+id/mercury"
-            style="@style/questions"
+            style="@style/planets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mercury" />
@@ -37,7 +37,7 @@
             android:background="?android:attr/dividerVertical" />
         <TextView
             android:id="@+id/venus"
-            style="@style/questions"
+            style="@style/planets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/venus" />
@@ -49,7 +49,7 @@
             android:background="?android:attr/dividerVertical" />
         <TextView
             android:id="@+id/earth"
-            style="@style/questions"
+            style="@style/planets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/earth" />
@@ -61,7 +61,7 @@
             android:background="?android:attr/dividerVertical" />
         <TextView
             android:id="@+id/mars"
-            style="@style/questions"
+            style="@style/planets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mars" />
@@ -73,7 +73,7 @@
             android:background="?android:attr/dividerVertical" />
         <TextView
             android:id="@+id/jupiter"
-            style="@style/questions"
+            style="@style/planets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/jupiter" />
@@ -85,7 +85,7 @@
             android:background="?android:attr/dividerVertical" />
         <TextView
             android:id="@+id/saturn"
-            style="@style/questions"
+            style="@style/planets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/saturn" />
@@ -98,7 +98,7 @@
             android:background="?android:attr/dividerVertical" />
         <TextView
             android:id="@+id/uranus"
-            style="@style/questions"
+            style="@style/planets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/uranus" />
@@ -110,17 +110,21 @@
             android:background="?android:attr/dividerVertical" />
         <TextView
             android:id="@+id/neptune"
-            style="@style/questions"
+            style="@style/planets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/neptune" />
-
-
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="?android:attr/dividerVertical" />
+
+        <TextView
+            android:id="@+id/check_answer_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/questions"/>
 
     </LinearLayout>
 

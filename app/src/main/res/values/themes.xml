@@ -20,7 +20,15 @@
     </style>
     <style name="questions">
         <item name="android:layout_margin">16dp</item>
-        <item name="android:layout_gravity">center</item> -->
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="planets">
+        <item name="android:layout_margin">16dp</item>
+
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/teal_200</item>
+        <item name="android:textStyle">bold</item>
+
     </style>
 
 </resources>
