@@ -16,6 +16,8 @@ interface QuestionListener {
 }
 
 class QuestionFragment : Fragment(), View.OnClickListener {
+    // Using lateinit means the initial value does not have to be assigned
+    // lateinit can crash the app if assigned a 'null' value
     private lateinit var questionListener: QuestionListener
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -28,8 +30,7 @@ class QuestionFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_question, container, false)
     }

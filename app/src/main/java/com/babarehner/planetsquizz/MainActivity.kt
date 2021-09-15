@@ -3,7 +3,7 @@ package com.babarehner.planetsquizz
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentContainerView
-import com.babarehner.planetsquizz.AnswerFragment.Companion.newInstance
+
 
 
 
