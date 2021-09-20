@@ -6,52 +6,41 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 
 /**
  * A simple [Fragment] subclass.
 **/
 
-interface QuestionListener {
-    fun onSelected(QuestionId: Int)
-}
 
-class QuestionFragment : Fragment(), View.OnClickListener {
-    // Using lateinit means the initial value does not have to be assigned
-    // lateinit can crash the app if assigned a 'null' value
-    private lateinit var questionListener: QuestionListener
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is QuestionListener) {
-            questionListener = context
-        } else {
-            throw RuntimeException("must implementQuestionListener")
-        }
-    }
+class QuestionFragment : Fragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_question, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val questions = listOf<View>(
+        val answers = listOf<View>(
                 view.findViewById(R.id.q1),
                 view.findViewById(R.id.q2),
                 view.findViewById(R.id.q3)
         )
-        questions.forEach {
-            it.setOnClickListener(this)
+
+        answers.forEach { answer ->  val fragmentBundle = Bundle()
+            fragmentBundle.putInt(QUESTION_ID, answer.id)
+            answer.setOnClickListener(
+                    // R.id.question_id_action is in nav_graph
+                    // Go to ChooseAnserFragment per nav_graph with fragmentBundle
+                    Navigation.createNavigateOnClickListener(R.id.question_id_action,
+                                                                fragmentBundle
+                    )
+            )
         }
     }
 
-    // handle View.OnClickLIstener
-    override fun onClick(v: View?) {
-        v?.let { question ->
-            questionListener.onSelected(question.id)
-        }
-    }
+
 
 }
